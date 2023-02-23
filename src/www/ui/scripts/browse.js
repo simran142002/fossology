@@ -33,8 +33,15 @@ $(document).ready(function () {
         openCommentModal(source[0],source[1],source[2]);
     } );
     $('select.goto-active-option').change(function() {
-      var url = $(this).val();
-      if(url){ window.location = url;}
+      const url = $(this).val();
+      const optionText = $(this).find("option:selected").text();
+      let userResponse = true
+      if (optionText === "Delete") {
+        userResponse = confirm("All analysis only associated with the deleted upload file will also be deleted. This will delete your file permanently are you sure?")
+      } 
+      if(url && userResponse) {
+        window.location = url;
+      }
     });
   });
   commentModal = $('#commentModal').modal('hide');
