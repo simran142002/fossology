@@ -7,6 +7,7 @@
 {% block styles %}
   {{ parent() }}
   <link rel='stylesheet' href='css/access-token.css'>
+  <link rel='stylesheet' href='css/bootstrap-icons.css'>
 {% endblock %}
 
 {% block content %}
@@ -48,16 +49,16 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Toggle Password Visibility</title>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
       <link rel="stylesheet" href="css/style.css" />
     <tr {{ style }}>
       <th width="25%">{{ "Password"|trans }}{{ passOptional|trans }}</th>
-      <td><input type="password" name="pass1" size="20" id="passcheck" /><i class="bi bi-eye-slash" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>{% if passwordPolicy is not empty %}
-      <br /><span class="passPolicy">{{ passwordPolicy }}</span>
+      <td><input type="password" name="pass1" size="20" id="passcheck" /><span class="bi bi-eye"></span>
+        <img src="images/eyes.png" class="bi bi-eye-slash" id="togglePasswords"></img>{% if passwordPolicy is not empty %}
+        <br /><span class="passPolicy">{{ passwordPolicy }}</span>
       {% endif %}</td>
     </tr>
      <script>
-        const togglePassword = document.querySelector('#togglePassword');
+        const togglePassword = document.querySelector('#togglePasswords');
         const password = document.querySelector('#passcheck');
 
         togglePassword.addEventListener('click', function (e) {
